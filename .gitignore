@@ -1,0 +1,110 @@
+# =========================
+# OS Files
+# =========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-cache/
+.yarn/
+.pnpm-store/
+
+# =========================
+# Build Outputs
+# =========================
+dist/
+build/
+out/
+.next/
+.cache/
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+
+# =========================
+# Django / Flask
+# =========================
+*.sqlite3
+instance/
+migrations/__pycache__/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Testing
+# =========================
+coverage/
+.nyc_output/
+*.lcov
+
+# =========================
+# Docker
+# =========================
+docker-data/
+*.pid
+
+# =========================
+# Temporary Files
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Certificates & Keys
+# =========================
+*.pem
+*.key
+*.crt
+
+# =========================
+# Supabase / Firebase
+# =========================
+.supabase/
+.firebase/
+
+# =========================
+# Misc
+# =========================
+*.bak
+*.old
+*.orig
