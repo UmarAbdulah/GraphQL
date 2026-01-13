@@ -55,13 +55,6 @@ env/
 pip-wheel-metadata/
 
 # =========================
-# Django / Flask
-# =========================
-*.sqlite3
-instance/
-migrations/__pycache__/
-
-# =========================
 # IDE / Editor
 # =========================
 .vscode/
@@ -70,41 +63,9 @@ migrations/__pycache__/
 *.swo
 
 # =========================
-# Testing
-# =========================
-coverage/
-.nyc_output/
-*.lcov
-
-# =========================
-# Docker
-# =========================
-docker-data/
-*.pid
-
-# =========================
 # Temporary Files
 # =========================
 tmp/
 temp/
 *.tmp
 
-# =========================
-# Certificates & Keys
-# =========================
-*.pem
-*.key
-*.crt
-
-# =========================
-# Supabase / Firebase
-# =========================
-.supabase/
-.firebase/
-
-# =========================
-# Misc
-# =========================
-*.bak
-*.old
-*.orig
