@@ -1,6 +1,6 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-
+import mergedResolvers from "./resolvers";
 
 // graphql schema defines the structure of the data that clients can query and operation they can perform
 // this schema consists of 2 main parts 
@@ -10,7 +10,7 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 // resolvers are the functions that determine how to fetch the data asscoiated with each field in the schema 
 const server = new ApolloServer({
     typeDefs,
-    resolvers
+    resolvers : mergedResolvers
 });
 
 const {url} = await startStandaloneServer(server);
