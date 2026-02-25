@@ -7,6 +7,7 @@ import mergedTypeDefs from "./typeDefs/index.js";
 import mergedResolvers from "./resolvers/index.js";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
+import connectDB from "./db/connectdb.js";
 
 // graphql schema defines the structure of the data that clients can query and operation they can perform
 // this schema consists of 2 main parts 
@@ -37,4 +38,5 @@ app.use(
 )
 
 await new Promise((resolve) => httpServer.listen({ port : 4000 }, resolve));
+await connectDB();
 console.log("Server is running on http://localhost:4000/");
