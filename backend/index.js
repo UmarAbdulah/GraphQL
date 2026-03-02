@@ -1,7 +1,13 @@
 import http from "http";
 import cors from "cors";
-import express from "express";
 import dotenv from "dotenv";
+import express from "express";
+
+import passport from "passport";
+import session from "express-session";
+import connectMongo from "connect-mongodb-session";
+import { buildContext } from "graphql-passport";
+
 import { ApolloServer } from "@apollo/server";
 import mergedTypeDefs from "./typeDefs/index.js";
 import mergedResolvers from "./resolvers/index.js";
@@ -9,6 +15,7 @@ import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 import connectDB from "./db/connectdb.js";
 
+import { configurePassport } from "./passport/passport.config.js";
 // graphql schema defines the structure of the data that clients can query and operation they can perform
 // this schema consists of 2 main parts 
 // type defs 
@@ -16,9 +23,36 @@ import connectDB from "./db/connectdb.js";
 // resolvers
 // resolvers are the functions that determine how to fetch the data asscoiated with each field in the schema 
 dotenv.config();
+configurePassport();
+
 const app = express();
 const httpServer = http.createServer(app);
 
+
+const MongoDBStore = connectMongo(session);
+const store = new MongoDBStore({
+    uri : process.env.MONGO_URI,
+    collection : "sessions"
+});
+
+store.on("error", (error) => {
+    console.log("Session store error:", error);
+});
+
+app.use(session({
+    secret : process.env.SESSION_SECRET,
+    resave : false,
+    saveUninitialized : false,
+    cookie : {
+        maxAge : 1000 * 60 * 60 * 24 ,
+        httpOnly : true,
+    },
+    store : store
+}));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 const server = new ApolloServer({
     typeDefs : mergedTypeDefs,
@@ -30,10 +64,13 @@ await server.start();
 
 app.use(
     "/",
-    cors(),
+    cors({
+        "origin" : "http://localhost:3000",
+        credentials : true
+    }),
     express.json(),
     expressMiddleware(server,{
-        context : async ({ req }) => ({ req })
+        context : async ({ req,res }) => (buildContext({ req,res }))
     })
 )
 
