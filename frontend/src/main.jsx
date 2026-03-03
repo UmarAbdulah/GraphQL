@@ -8,9 +8,9 @@ import GridBackground from "./components/ui/GridBackground";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      {/* <GridBackground> */}
-      <App />
-      {/* </GridBackground> */}
+      <GridBackground>
+        <App />
+      </GridBackground>
     </BrowserRouter>
   </StrictMode>,
 );
