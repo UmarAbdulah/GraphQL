@@ -33,7 +33,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className=" flex justify-center items-center md:py-30 ">
+    <div className=" flex justify-center items-center min-h-screen">
       <div className="flex rounded-lg overflow-hidden z-50 bg-gray-300">
         <div className="w-full bg-gray-100 min-w-80 sm:min-w-96 flex items-center justify-center">
           <div className="max-w-md w-full p-6">
