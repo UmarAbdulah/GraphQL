@@ -2,7 +2,7 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 const userResolver = {
   Query: {
-   authUser : async (_,_,context) => {
+   authUser : async (_,args,context) => {
       try{
          const user = context.getUser();
          return user;
@@ -78,7 +78,7 @@ const userResolver = {
       }
    },
 
-   logout : async (_,_,context) => {
+   logout : async (_,args,context) => {
       try {
          await context.logout();
          request.session.destroy((err) => {

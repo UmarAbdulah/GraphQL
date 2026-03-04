@@ -2,7 +2,7 @@ import Transaction from '../models/transaction.model.js';
 
 const transcationResolver = {
     Query : {
-        tranctions : async (_, _, context) => {
+        tranctions : async (_, args, context) => {
             try{
                 if (!context.getUser()) {
                     throw new Error('Unauthorized');

@@ -46,6 +46,8 @@ export default defineConfig([
       // Optional: You might also want to silence TS-specific unused var warnings 
       // if they still appear, though the JS rule being off often handles this.
       '@typescript-eslint/no-unused-vars': 'off',
+      "react-refresh/only-export-components": "off", // Disable React Refresh warning for non-component exports
+      "react/react-in-jsx-scope": "off", // Disable React in scope warning for React 17+
       
       // Optional: If you want to disable ALL warnings/errors for maximum quietness
       // "@typescript-eslint/no-explicit-any": "off",
